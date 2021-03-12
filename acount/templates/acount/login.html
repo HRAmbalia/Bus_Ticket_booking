@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman';
+            background: rgb(50, 62, 78);
+        }
+        .square {
+            width: 300px;
+            padding: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(100, 100, 100);
+            text-align: center; 
+        } 
+        .square input[name="username"], .square input[name="password"] {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            padding: 12px;
+            width: 230px;
+            border-color: rgb(65, 63, 63);
+            border-radius: 25px;
+            transition: 0.20s;
+        }
+        .square input[name="username"]:hover, .square input[name="password"]:hover {
+            width: 270px;
+            background: rgb(50, 62, 78);
+        }
+        .square input[name="sbmt"] {
+            margin: 20px auto;
+            text-align: center;
+            padding: 12px;
+            width: 120px;
+            border-color: rgb(63, 64, 65);
+            border-radius: 25px;
+            transition: 0.20s;
+        }
+        .square input[name="sbmt"]:hover {
+            width: 150px;
+            border-color: rgb(166, 138, 202);
+            background: rgb(50, 62, 78);
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" class="square">
+        <h1>Login </h1>
+        {% csrf_token %}
+        <!-- <label for="username"></label> -->
+        <input type="text" name="username" placeholder="UserName" >
+        <!-- <label for="password"></label> -->
+        <input type="password" name="password" placeholder="Password">
+
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+
+        <br><input type="submit" name="sbmt" value="Login">
+    </form>
+</body>
+</html>

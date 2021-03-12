@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman';
+            background: rgb(50, 62, 78);
+        }
+        .square {
+            width: 440px;
+            height: 375px;
+            padding: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(100, 100, 100);
+            text-align: center; 
+        }
+        .square input[id="rs"]:hover {
+            width: 130px;
+            border-color: rgb(166, 138, 202);
+            background: rgb(50, 62, 78);
+        }
+        .square input[id="rs"] {
+            margin: 20px auto;
+            text-align: center;
+            padding: 12px;
+            width: 155px;
+            border-color: rgb(63, 64, 65);
+            border-radius: 25px;
+            transition: 0.20s;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" class="square">
+        <h1>REGISTRATION FORM</h1>
+        {% csrf_token %}
+        
+        <label for="username">Uname : </label>{{form.username}}
+        <br><br>
+        <label for="email">Email : </label>{{form.email}}
+        <br><br>
+        <label for="password1">Pword : </label>{{form.password1}}
+        <br><br>
+        <label for="password2">CPass : </label>{{form.password2}}
+        <br><br>
+
+        {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                {{ error|escape }}
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            {{ error|escape }}
+        {% endfor %}
+        {% endif %}
+        <input type="reset" id="rs">
+        <input type="submit" value="Register" id="rs">
+    </form>
+</body>
+</html>
