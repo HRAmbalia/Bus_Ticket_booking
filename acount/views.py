@@ -5,6 +5,7 @@ from .forms import registerForm
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.http import HttpResponse
 # 
 
 def index(request):
@@ -46,3 +47,13 @@ def homePage(request):
 def logoutUser(request):
     logout(request)
     return redirect('index')
+
+def contactUs(request):
+    # return HttpResponse("Contact Us")
+    context = {}
+    return render(request, 'acount/contactUs.html', context)
+
+def aboutProject(request):
+    # return HttpResponse("About Project")
+    context = {}
+    return render(request, 'acount/aboutProj.html', context)

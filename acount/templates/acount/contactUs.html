@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman';
+            background: rgb(50, 62, 78);
+        }
+        .square {
+            width: 450px;
+            padding: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(100, 100, 100);
+            text-align: center; 
+        }
+        .square input[id="rs"]:hover {
+            width: 130px;
+            border-color: rgb(166, 138, 202);
+            background: rgb(50, 62, 78);
+        }
+        .square input[id="rs"] {
+            margin: 20px auto;
+            text-align: center;
+            padding: 12px;
+            width: 155px;
+            border-color: rgb(63, 64, 65);
+            border-radius: 25px;
+            transition: 0.20s;
+        }
+        .square input[id="xyz"] {
+            text-align: center;
+            padding: 12px;
+            width: 280px;
+            border-color: rgb(63, 64, 65);
+            border-radius: 20px;
+            transition: 0.20s;
+        }
+        .square input[id="xyz"]:hover {
+            width: 320px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" class="square">
+        <h1>Contact Us</h1>
+        <input type="text" name="nm" placeholder="Your Name" size="33" id="xyz" required><br><br>
+        <input type="email" name="mail" placeholder="Your E-mail" size="33" id="xyz" required><br><br>
+        <input type="text" name="sub" placeholder="Subject" size="33" id="xyz"><br><br>
+        <textarea name="msg" cols="50" rows="10" placeholder="Your Message" required id="xyz"></textarea><br><br>
+        <input type="reset" id="rs">
+        <input type="submit" value="Contact Us" id="rs">
+    </form>
+</body>
+</html>
