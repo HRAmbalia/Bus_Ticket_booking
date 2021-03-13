@@ -52,6 +52,14 @@
     </style>
 </head>
 <body>
+
+    <!-- Paste links here -->
+    <a href="{% url 'index' %}">Home</a> || 
+    <a href="{% url 'loginUser' %}">Login</a> || 
+    <a href="{% url 'registerUser' %}">Register</a> || 
+    <a href="{% url 'contactUs' %}">Contact Us</a> || 
+    <a href="{% url 'aboutProj' %}">About Project</a>
+
     <!-- action is this page itself, this page's URL -->
     <form action="/contact/" method="post" class="square">
         {% csrf_token %}
