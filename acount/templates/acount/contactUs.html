@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Contact Us</title>
     <style>
         body {
@@ -13,8 +15,9 @@
             background: rgb(50, 62, 78);
         }
         .square {
-            width: 450px;
-            padding: 40px;
+            height: 550px;
+            width: 600px;
+            padding: 15px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -25,12 +28,11 @@
         .square input[id="rs"]:hover {
             width: 130px;
             border-color: rgb(166, 138, 202);
-            background: rgb(50, 62, 78);
         }
         .square input[id="rs"] {
-            margin: 20px auto;
+            margin: 10px auto;
             text-align: center;
-            padding: 12px;
+            padding: 9px;
             width: 155px;
             border-color: rgb(63, 64, 65);
             border-radius: 25px;
@@ -38,10 +40,10 @@
         }
         .square input[id="xyz"] {
             text-align: center;
-            padding: 12px;
-            width: 280px;
+            padding: 8px;
+            width: 300px;
             border-color: rgb(63, 64, 65);
-            border-radius: 20px;
+            border-radius: 25px;
             transition: 0.20s;
         }
         .square input[id="xyz"]:hover {
@@ -50,14 +52,30 @@
     </style>
 </head>
 <body>
-    <form action="" method="post" class="square">
-        <h1>Contact Us</h1>
+    <!-- action is this page itself, this page's URL -->
+    <form action="/contact/" method="post" class="square">
+        {% csrf_token %}
+        <h1>Contact Us</h1><br>
         <input type="text" name="nm" placeholder="Your Name" size="33" id="xyz" required><br><br>
         <input type="email" name="mail" placeholder="Your E-mail" size="33" id="xyz" required><br><br>
         <input type="text" name="sub" placeholder="Subject" size="33" id="xyz"><br><br>
-        <textarea name="msg" cols="50" rows="10" placeholder="Your Message" required id="xyz"></textarea><br><br>
+        <textarea name="msg" cols="40" rows="5" placeholder="Your Message" required id="xyz"></textarea><br><br>
         <input type="reset" id="rs">
         <input type="submit" value="Contact Us" id="rs">
     </form>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message : </strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <!-- bootstrap starter code -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

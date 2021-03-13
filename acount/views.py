@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.http import HttpResponse
+from .models import contactUs
 # 
 
 def index(request):
@@ -48,8 +49,20 @@ def logoutUser(request):
     logout(request)
     return redirect('index')
 
-def contactUs(request):
+def contactUsPage(request):
     # return HttpResponse("Contact Us")
+    if request.method == 'POST':
+        Uname = request.POST['nm']
+        email = request.POST['mail']
+        subject = request.POST['sub']
+        message = request.POST['msg']
+
+        if len(Uname)<2 or len(email)<6 or len(message)<5:
+            messages.error(request, 'Fill form Correctly')
+        else:
+            contactObj = contactUs(name=Uname, email=email, subject=subject, message=message)
+            contactObj.save()
+            messages.success(request, 'Form submitted successfully')
     context = {}
     return render(request, 'acount/contactUs.html', context)
 
