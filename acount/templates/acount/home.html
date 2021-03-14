@@ -68,13 +68,11 @@
         <a href="#Logo" class="logo">Bus Ticket Booking</a>
         <div class="header-right">
             <a class="active" href="{% url 'index' %}">Home</a>
-            <a href="{% url 'registerUser' %}">Register</a>
             <a href="{% url 'contactUs' %}">Contact Us</a>
             <a href="{% url 'aboutProj' %}">About Project</a>
             <a href="{% url 'logoutUser' %}">Logout</a>
         </div>
     </div>
-
     <h1>Welcome {{user.username}}</h1>
 </body>
 </html>

@@ -14,6 +14,7 @@
         }
         .square {
             width: 400px;
+            height: 430px;
             padding: 40px;
             position: absolute;
             top: 50%;
@@ -129,7 +130,8 @@
             {{message}}
         {% endfor %}
 
-        <br><input type="submit" name="sbmt" value="Login">
+        <br><input type="submit" name="sbmt" value="Login"><br>
+        Not have account? <a href="{% url 'registerUser' %}">Register</a>
     </form>
 </body>
 </html>
