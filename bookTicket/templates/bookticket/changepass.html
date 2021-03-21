@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Change Password</title>
     <style>
         body {
             margin: 0;
@@ -14,10 +14,10 @@
         }
         .square {
             width: 440px;
-            height: 480px;
-            padding: 40px;
+            height: 540px;
+            padding: 30px;
             position: absolute;
-            top: 54%;
+            top: 55%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: rgba(100, 100, 100);
@@ -37,6 +37,7 @@
             border-radius: 25px;
             transition: 0.20s;
         }
+
         * {
             box-sizing: border-box;
         }
@@ -92,39 +93,34 @@
         <a href="#Logo" class="logo">Bus Ticket Booking</a>
         <div class="header-right">
             <a class="active" href="{% url 'index' %}">Home</a>
-            <a href="{% url 'loginUser' %}">Login</a>
-            <a href="{% url 'contactUs' %}">Contact Us</a>
-            <a href="{% url 'aboutProj' %}">About Project</a>
+            <a href="{% url 'search' %}">Search</a>
+            <a href="{% url 'bookings' %}">My Booking</a>
+            <a href="{% url 'logoutUser' %}">Logout</a>
         </div>
     </div>
 
     <form action="" method="post" class="square">
-        <h1>REGISTRATION FORM</h1>
-        {% csrf_token %}
-        
-        <label for="username">Uname : </label>{{form.username}}
-        <br><br>
-        <label for="email">Email : </label>{{form.email}}
-        <br><br>
-        <label for="password1">Pword : </label>{{form.password1}}
-        <br><br>
-        <label for="password2">CPass : </label>{{form.password2}}
-        <br><br>
-
-        {% if form.errors %}
-        {% for field in form %}
-            {% for error in field.errors %}
-                {{ error|escape }}
+    {% csrf_token %}
+        <h1>CHANGE PASSWORD FORM</h1>
+        <h2>You are logged in as {{user.username}}</h2>
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p>{{error}}</p>
             {% endfor %}
-        {% endfor %}
-        {% for error in form.non_field_errors %}
-            {{ error|escape }}
-        {% endfor %}
         {% endif %}
-        
+
+        {% for form in form %}
+            {{form.label_tag}} {{form}} {{form.errors|striptags}} <br><br>
+        {% endfor %}
+
+        {% comment %} <label for="username">Password : </label>{{form.password}}
+        <br><br>
+        <label for="email">Confirm Password : </label>{{form.email}}
+        <br><br> {% endcomment %}
+
         <input type="reset" id="rs">
-        <input type="submit" value="Register" id="rs"><br>
-        Already have account? <a href="{% url 'loginUser' %}">Login</a>
+        <input type="submit" value="Save" id="rs"><br>
+        {% comment %} {{form.as_p}} {% endcomment %}
 
     </form>
 </body>

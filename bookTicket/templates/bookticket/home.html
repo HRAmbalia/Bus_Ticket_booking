@@ -1,10 +1,11 @@
+{% comment %} this never can be called {% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Home</title>
     <style>
         * {
             box-sizing: border-box;
@@ -57,31 +58,32 @@
 </head>
 <body>
 
-    {% if user.is_authenticated %}
+    <!-- Paste links here -->
+    <!-- <a href="{% url 'index' %}">Home</a> || 
+    <a href="{% url 'registerUser' %}">Register</a> ||
+    <a href="{% url 'contactUs' %}">Contact Us</a> || 
+    <a href="{% url 'aboutProj' %}">About Project</a> || 
+    <a href="{% url 'logoutUser' %}">Logout</a> -->
+
     <div class="header">
         <a href="#Logo" class="logo">Bus Ticket Booking</a>
         <div class="header-right">
             <a class="active" href="{% url 'index' %}">Home</a>
-            <a href="{% url 'search' %}">Search</a>
-            <a href="{% url 'bookings' %}">My Booking</a>
-            <a href="{% url 'chgpass' %}">Chg Password</a>
+            <a href="{% url 'contactUs' %}">Contact Us</a>
+            <a href="{% url 'aboutProj' %}">About Project</a>
+            <a href="search">Search Bus</a>
+            <a href="book">Bookings</a>
+            <a href="pass">Change Password</a>
+            <!-- THIS GENERATES ERROR -->
+            <!-- <a href="{% url '/hom
+                                    e/search' %}">Search Bus</a> -->
+            <!-- <a href="{% url 'boo
+                                    kings' %}">Bookings</a> -->
+            <!-- <a href="{% url 'ch
+                                    gpass' %}">Change Password</a> -->
             <a href="{% url 'logoutUser' %}">Logout</a>
         </div>
     </div>
-    <h1>Welcome {{user.username}}</h1>
-
-    {% else %}
-    <div class="header">
-        <a href="#Logo" class="logo">Bus Ticket Booking</a>
-        <div class="header-right">
-            <a class="active" href="{% url 'index' %}">Home</a>
-            <a href="{% url 'loginUser' %}">Login</a>
-            <a href="{% url 'registerUser' %}">Register</a>
-            <a href="{% url 'contactUs' %}">Contact Us</a>
-            <a href="{% url 'aboutProj' %}">About Project</a>
-        </div>
-    </div>
-    <h1>Landing - Page</h1>
-    {% endif %}
+    <h1>Welcome ---> {{user.username}}</h1>
 </body>
 </html>

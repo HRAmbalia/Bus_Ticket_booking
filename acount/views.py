@@ -33,7 +33,7 @@ def loginUser(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('homePage')
+                return redirect('/')
             else:
                 messages.error(request, 'Invalid username or password')
         else:
@@ -41,9 +41,11 @@ def loginUser(request):
     context = {}
     return render(request, 'acount/login.html', context)
 
-def homePage(request):
-    context = {}
-    return render(request, 'acount/home.html', context)
+# this function is redirected to 'bookTicket/homePage'
+# def homePage(request):
+#     context = {}
+#     return render(request, 'acount/home.html', context)
+    # return render(request, 'bookTicket/home.html', context)
 
 def logoutUser(request):
     logout(request)
