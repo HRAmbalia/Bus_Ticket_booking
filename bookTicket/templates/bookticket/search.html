@@ -4,8 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Search</title>
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman';
+            background: rgb(50, 62, 78);
+        }
+        .square {
+            width: 440px;
+            height: 330px;
+            padding: 30px;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(100, 100, 100);
+            text-align: center; 
+        }
+        .square input[id="rs"]:hover {
+            width: 130px;
+            border-color: rgb(166, 138, 202);
+            background: rgb(50, 62, 78);
+        }
+        .square input[id="rs"] {
+            margin: 20px auto;
+            text-align: center;
+            padding: 12px;
+            width: 155px;
+            border-color: rgb(63, 64, 65);
+            border-radius: 25px;
+            transition: 0.20s;
+        }
+        .square input[name="from"] {
+            margin: 20px auto;
+            text-align: center;
+            padding: 12px;
+            width: 155px;
+            border-color: rgb(63, 64, 65);
+            border-radius: 25px;
+            transition: 0.20s;
+        }
+        table, th, td {
+            padding: 2px;
+        }
+        {% comment %}  {% endcomment %}
         * {
             box-sizing: border-box;
         }
@@ -61,14 +105,73 @@
         <a href="#Logo" class="logo">Bus Ticket Booking</a>
         <div class="header-right">
             <a class="active" href="{% url 'index' %}">Home</a>
-            <a href="{% url 'loginUser' %}">Login</a>
-            <a href="{% url 'contactUs' %}">Contact Us</a>
-            <a href="{% url 'aboutProj' %}">About Project</a>
+            <a href="{% url 'bookings' %}">My Booking</a>
+            <a href="{% url 'chgpass' %}">Chg Password</a>
+            <a href="{% url 'logoutUser' %}">Logout</a>
         </div>
     </div>
+
+    <!-- only if user is authencated -->
+
+    {% if user.is_authenticated %}
+
+    <form action="bookBus" method="POST" class="square"> 
+    {% csrf_token %}
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
     <h1>Search</h1>
-
-    
-
+        <table>
+            <tr>
+                <th style="width:50%"><label for="from">From :</label></th>
+                <td><select name="from" id="opt" style="width:200px;">
+                    <option value="Jamnagar">Jamnagar</option>
+                    <option value="Junagadh">Junagadh</option>
+                    <option value="Kalavad">Kalavad</option>
+                    <option value="Rajkot">Rajkot</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Porbandar">Porbandar</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Surat">Surat</option>
+                    <option value="Vankaner">Vankaner</option>
+                    <option value="Nadiad">Nadiad</option>
+                    <option value="Baroda">Baroda</option>
+                </select></td>
+            </tr>
+            <th><label for="to">To :</label></th>
+            <td><select name="to" id="opt" style="width:200px;">
+                <option value="Jamnagar">Jamnagar</option>
+                <option value="Junagadh">Junagadh</option>
+                <option value="Kalavad">Kalavad</option>
+                <option value="Rajkot">Rajkot</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Porbandar">Porbandar</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Surat">Surat</option>
+                <option value="Vankaner">Vankaner</option>
+                <option value="Nadiad">Nadiad</option>
+                <option value="Baroda">Baroda</option>
+            </select></td>
+            <tr>
+                <th><label for="traveldt">Travel date :</label></th>
+                <td><input type="date" id="traveldt" name="traveldt"><br></td>
+            <tr>
+            <tr>
+                <td><input type="submit" value="Search" id="rs"></td>
+                <td><input type="reset" value="Reset" id="rs"></td>
+            </tr>
+        </table>
+    </form>
+    {% endif %}
+    from : {{arrival}} <br>to : {{destination}}<br> by User : {{user}}<br>
+    {% if all_bus_details %}
+        Data is there
+        {% for data in all_bus_details %}
+            {{ data.busID }}
+        {% endfor %}
+    {% else %}
+        no data
+    {% endif %}
+    <!-- all data will be collected by function in "views.py" and according to that bus will be shown -->
 </body>
 </html>

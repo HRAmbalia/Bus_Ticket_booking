@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>search bus</title>
     <style>
         * {
             box-sizing: border-box;
@@ -69,21 +69,22 @@
         <a href="#Logo" class="logo">Bus Ticket Booking</a>
         <div class="header-right">
             <a class="active" href="{% url 'index' %}">Home</a>
-            <a href="{% url 'contactUs' %}">Contact Us</a>
-            <a href="{% url 'aboutProj' %}">About Project</a>
-            <a href="search">Search Bus</a>
-            <a href="book">Bookings</a>
-            <a href="pass">Change Password</a>
-            <!-- THIS GENERATES ERROR -->
-            <!-- <a href="{% url '/hom
-                                    e/search' %}">Search Bus</a> -->
-            <!-- <a href="{% url 'boo
-                                    kings' %}">Bookings</a> -->
-            <!-- <a href="{% url 'ch
-                                    gpass' %}">Change Password</a> -->
             <a href="{% url 'logoutUser' %}">Logout</a>
         </div>
     </div>
-    <h1>Welcome ---> {{user.username}}</h1>
+    {% for bus in all_bus_details %}
+        <h1>Bookings : {{bus}}</h1>
+        <h1>User name ---> {{user.username}}</h1>
+        <h1>Bus ID ---> {{bus.busID}}</h1>
+        <h1>Arrival ---> {{bus.arrival}}</h1>
+        <h1>Destination ---> {{bus.destination}}</h1>
+        <h1>Rent ---> {{bus.rent}}</h1>
+        <h1>Distance ---> {{bus.distance}}</h1>
+        <h1>Booked Seat ---> {{bus.bookedSeat}}</h1>
+        <h1>Time1 ---> {{bus.time1}}</h1>
+        <h1>Time2 ---> {{bus.time2}}</h1>
+    {% endfor %}
+    <h2>
+    <a href="bookBus">clic</a></h2>
 </body>
 </html>
