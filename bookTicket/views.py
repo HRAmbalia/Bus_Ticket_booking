@@ -13,12 +13,15 @@ import reportlab
 import io
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
+<<<<<<< HEAD
 from reportlab.lib.pagesizes import letter
 # 
 # from io import BytesIO
 # from django.http import HttpResponse
 # from django.template.loader import get_template
 # from xhtml2pdf import pisa
+=======
+>>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
 #
 
 # def homePage(request):
@@ -54,6 +57,7 @@ def search(request):
 def bookBus(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
+<<<<<<< HEAD
             # -------------------------------------
             if 'arrival' in request.session:
                 arr = request.session.get('arrival')
@@ -73,21 +77,51 @@ def bookBus(request):
                 date = request.POST['traveldt']
                 request.session['travelDate'] = date
             # -------------------------------------
+=======
+            if 'arrival' in request.session:
+                arr = request.session.get('arrival')
+                print(arr)
+            else:
+                arr = request.POST['from']
+                print(arr)
+                request.session['arrival'] = arr
+            # request.session['arrival'] = arr
+            if 'destination' in request.session:
+                dest = request.session.get('destination')
+                print(dest)
+            else:
+                dest = request.POST['to']
+                print(dest)
+                request.session['destination'] = dest
+            # request.session['destination'] = dest
+            if 'travelDate' in request.session:
+                date = request.session.get('travelDate')
+                print(date)
+            else:
+                date = request.POST['traveldt']
+                print(date)
+                request.session['travelDate'] = date
+            # request.session['travelDate'] = date
+>>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
             all_bus_details = busDetails.objects.all()
             all_bus_details = busDetails.objects.filter(arrival=arr).filter(destination=dest)
             user_name = request.user.username
             for bus in all_bus_details:
                 bus_ID = bus.busID
                 bus_fare = bus.rent
+<<<<<<< HEAD
             # if seat is already booked and user perss "ADD" this will be printed
             all_ticket_details = ticketDetail.objects.all()
             all_ticket_details = ticketDetail.objects.filter(busID=bus_ID).filter(journeyDate=date).filter(userName=user_name)
             total_fare = 0
+=======
+>>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
             if 'pnm' in request.POST:
                 passanger_name = request.POST['pnm']
                 passanger_age = request.POST['pAge']
                 passanger_gender = request.POST['gender']
                 passanger_seatNo = request.POST['sno']
+<<<<<<< HEAD
                 # 
                 
                 #
@@ -126,6 +160,20 @@ def bookBus(request):
                             return render(request, 'bookticket/bookBus.html', context)
             if all_bus_details:
                 context = {'arrival': arr, 'destination': dest, 'bus_details': all_bus_details, 'ticDetails':all_ticket_details, 'totalFare':total_fare }
+=======
+                ticketDetailObj = ticketDetail(userName=user_name, busID=bus_ID, journeyDate=date, totalFare=bus_fare, seatNo=passanger_seatNo, passName=passanger_name, passAge=passanger_age, PassGender=passanger_gender)
+                ticketDetailObj.save()
+                all_ticket_details = ticketDetail.objects.all()
+                all_ticket_details = ticketDetail.objects.filter(busID=bus_ID).filter(journeyDate=date).filter(userName=user_name)
+                totalFare = 0
+                for fare in all_ticket_details:
+                    totalFare = totalFare + fare.totalFare
+                if all_bus_details:
+                    context = {'arrival': arr, 'destination': dest, 'bus_details': all_bus_details, 'ticDetails':all_ticket_details, 'totalFare':totalFare}
+                    return render(request, 'bookticket/bookBus.html', context)
+            if all_bus_details:
+                context = {'arrival': arr, 'destination': dest, 'bus_details': all_bus_details}
+>>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
                 return render(request, 'bookticket/bookBus.html', context)
             else:
                 messages.info(request,"not found")
@@ -149,6 +197,7 @@ def booking(request):
         return render(request, 'bookticket/myBookings.html', context)
     else:
         return redirect('/login')
+<<<<<<< HEAD
 
 def dltTicket(request):
     if request.user.is_authenticated:
@@ -158,6 +207,8 @@ def dltTicket(request):
             return redirect('/myBooking')
     else:
         return redirect('/login')
+=======
+>>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
 
 def chgpass(request):
     if request.user.is_authenticated:
@@ -174,6 +225,7 @@ def chgpass(request):
     else:
         return redirect('/login')
 
+<<<<<<< HEAD
 def print_pdf(request):
     if request.user.is_authenticated:
         if request.method == "GET":
@@ -217,3 +269,5 @@ def payFare(request):
         return render(request, 'bookticket/payment.html', context)
     else:
         return redirect('/login')
+=======
+>>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45

@@ -16,7 +16,11 @@
             padding: 10px;
             position: absolute;
             width: 70%;
+<<<<<<< HEAD
             top: 90%;
+=======
+            top: 100%;
+>>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
             left: 50%;
             transform: translate(-50%, -50%);
             background: rgba(100, 100, 100);
@@ -100,6 +104,7 @@
     </div>
 
     <!-- only if user is authencated -->
+<<<<<<< HEAD
     {% if user.is_authenticated %}
         <div class="square">
             <h1> Booking History</h1>
@@ -167,6 +172,77 @@
                 </table>
             {% endif %}
         </div>
+=======
+
+    {% if user.is_authenticated %}
+        {% comment %} {{ allticket }} {% endcomment %}
+        
+        {% if oldticket %}
+        <div class="square">
+        <table style="width:70%, margin-left: auto, margin-right: auto"; align="center">
+        <h1> Booking History </h1>
+            <tr>
+                <th colspan="8">
+                    <h3>Old Bookings</h3>
+                </th>
+            </tr>
+            <tr>
+                <th>Ticket-ID</th>
+                <th>Bus-ID</th>
+                <th>Journey-Date</th>
+                <th>Fare</th>
+                <th>Passanger-Name</th>
+                <th>Passanger-Age</th>
+                <th>Passanger-Gender</th>
+                
+            </tr>
+            {% for tickets in oldticket %}
+                <tr>
+                    <td>{{tickets.ticketID}}</td>
+                    <td>{{tickets.busID}}</td>
+                    <td>{{tickets.journeyDate}}</td>
+                    <td>{{tickets.totalFare}}</td>
+                    <td>{{tickets.passName}}</td>
+                    <td>{{tickets.passAge}}</td>
+                    <td>{{tickets.PassGender}}</td>
+                    
+                </tr>
+            {% endfor %}   
+        </table>
+        {% endif %}
+        {% if newticket %}
+        <table style="width:70%, margin-left: auto, margin-right: auto"; align="center">
+            <tr>
+                <th colspan="8">
+                    <h3>Upcoming Bookings</h3>
+                </th>
+            </tr>
+            <tr>
+                <th>Ticket-ID</th>
+                <th>Bus-ID</th>
+                <th>Journey-Date</th>
+                <th>Fare</th>
+                <th>Passanger-Name</th>
+                <th>Passanger-Age</th>
+                <th>Passanger-Gender</th>
+                
+            </tr>
+            {% for tickets in newticket %}
+                <tr>
+                    <td>{{tickets.ticketID}}</td>
+                    <td>{{tickets.busID}}</td>
+                    <td>{{tickets.journeyDate}}</td>
+                    <td>{{tickets.totalFare}}</td>
+                    <td>{{tickets.passName}}</td>
+                    <td>{{tickets.passAge}}</td>
+                    <td>{{tickets.PassGender}}</td>
+                    
+                </tr>
+            {% endfor %}
+        </table>
+        </div>
+        {% endif %}
+>>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
     {% endif %}
 </body>
 </html>
