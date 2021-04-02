@@ -1,5 +1,4 @@
-{% comment %} this never can be called {% endcomment %}
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>search bus</title>
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman';
+            background: rgb(50, 62, 78);
+        }
+        .square {
+            width: 620px;
+            height: 480px;
+            padding: 30px;
+            position: absolute;
+            top: 55%;
+            left: 75%;
+            transform: translate(-50%, -50%);
+            background: rgba(100, 100, 100);
+            text-align: center; 
+        }
         * {
             box-sizing: border-box;
         }
@@ -54,6 +70,20 @@
                 float: none;
             }
         }
+        table,
+        th,
+        td {
+            left: 5%;
+            border: 1px solid rgb(0, 0, 0);
+            border-width: thin;
+        }
+        th,
+        td {
+            padding: 5px;
+            text-align: left;
+        }
+        #image { float: left;
+		  }
     </style>
 </head>
 <body>
@@ -61,23 +91,11 @@
         <a href="#Logo" class="logo">Bus Ticket Booking</a>
         <div class="header-right">
             <a class="active" href="{% url 'index' %}">Home</a>
+            <a href="{% url 'bookings' %}">My Booking</a>
+            <a href="{% url 'chgpass' %}">Chg Password</a>
             <a href="{% url 'logoutUser' %}">Logout</a>
         </div>
     </div>
-    {% for bus in all_bus_details %}
-        <h1>Bookings : {{bus}}</h1>
-        <h1>User name ---> {{user.username}}</h1>
-        <h1>Bus ID ---> {{bus.busID}}</h1>
-        <h1>Arrival ---> {{bus.arrival}}</h1>
-        <h1>Destination ---> {{bus.destination}}</h1>
-        <h1>Rent ---> {{bus.rent}}</h1>
-        <h1>Distance ---> {{bus.distance}}</h1>
-        <h1>Booked Seat ---> {{bus.bookedSeat}}</h1>
-        <h1>Time1 ---> {{bus.time1}}</h1>
-        <h1>Time2 ---> {{bus.time2}}</h1>
-    {% endfor %}
-    <h2>
-    <a href="/bookBus">click</a></h2>
+    <h1>Payment Gateway</h1>
 </body>
 </html>
-{% comment %} useless file {% endcomment %}

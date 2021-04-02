@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search bus</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman';
+            background: rgb(50, 62, 78);
+        }
+        .square {
+            width: 620px;
+            height: 480px;
+            padding: 30px;
+            position: absolute;
+            top: 55%;
+            left: 75%;
+            transform: translate(-50%, -50%);
+            background: rgba(100, 100, 100);
+            text-align: center; 
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+        .header {
+            overflow: hidden;
+            background-color: rgba(82, 63, 46, 0.699);
+            padding: 12px 20px;
+        }
+        .header a {
+            float: left;
+            color: black;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            line-height: 20px;
+            border-radius: 5px;
+        }
+        .headera.logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .header a:hover {
+            background-color: grey;
+            color: black;
+        }
+        .headera.active {
+            background-color: green;
+            color: white;
+        }
+        .header-right {
+            float: right;
+        }
+        @media screen and (max-width: 500px) {
+            .header a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+            .header-right {
+                float: none;
+            }
+        }
+        table,
+        th,
+        td {
+            left: 5%;
+            border: 1px solid rgb(0, 0, 0);
+            border-width: thin;
+        }
+        th,
+        td {
+            padding: 5px;
+            text-align: left;
+        }
+        #image { float: left;
+		  }
+    </style>
+</head>
+<body>
+
+    <!-- Paste links here -->
+    <!-- <a href="{% url 'index' %}">Home</a> || 
+    <a href="{% url 'registerUser' %}">Register</a> ||
+    <a href="{% url 'contactUs' %}">Contact Us</a> || 
+    <a href="{% url 'aboutProj' %}">About Project</a> || 
+    <a href="{% url 'logoutUser' %}">Logout</a> -->
+
+    <div class="header">
+        <a href="#Logo" class="logo">Bus Ticket Booking</a>
+        <div class="header-right">
+            <a class="active" href="{% url 'index' %}">Home</a>
+            <a href="{% url 'bookings' %}">My Booking</a>
+            <a href="{% url 'chgpass' %}">Chg Password</a>
+            <a href="{% url 'logoutUser' %}">Logout</a>
+        </div>
+    </div>
+    <form action="" method="POST" class="square">
+        {% csrf_token %}
+        {% comment %} https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5z8-3WshCsE_BWkuj0CSCR3MVTC1WsA8RfA&usqp=CAU {% endcomment %}
+        <img src="{% static 'images/seats.png' %}" id="image" height="420px" width="300px" style="padding:5px";>
+        <br><br><br><br>
+        <input type="text" name="pnm" placeholder="Passanger Name" id="rs" pattern="[a-z]{1,15}" required><br><br>
+        <input type="number" name="pAge" placeholder="Passanger Age" id="rs" required><br><br>
+        <input type="text" name="sno" placeholder="Seat Number" id="rs" pattern="[A-Za-z]{1}" required><br><br>
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+        Gender : Male <input type="radio" name="gender" value="male" required>
+                 Female <input type="radio" name="gender" value="female" required><br><br><br>
+        <input type="reset" value="Reset">
+        <input type="submit" value="ADD">
+    </form>
+
+    <h1>Added Passangers : </h1>
+        <table>
+            <tr>
+                <th>Bus ID</th>
+                <th>Seat Number</th>
+                <th>Passanger Name</th>
+                <th>Passanger Age</th>
+                <th>Passanger Gender</th>
+                <th>Fare</th>
+            </tr>
+            {% for tic in ticDetails %}
+            <tr>
+                <td>{{tic.busID}}</td>
+                <td>{{tic.seatNo}}</td>
+                <td>{{tic.passName}}</td>
+                <td>{{tic.passAge}}</td>
+                <td>{{tic.PassGender}}</td>
+                <td>{{tic.totalFare}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        total Fare : {{totalFare}}<br>
+        check-out : <a href="/payment">Click here</a>
+</body>
+</html>
