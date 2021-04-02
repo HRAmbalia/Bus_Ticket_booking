@@ -14,11 +14,11 @@
         }
         .square {
             width: 620px;
-            height: 480px;
+            height: 539px;
             padding: 30px;
             position: absolute;
             top: 55%;
-            left: 75%;
+            left: 50%;
             transform: translate(-50%, -50%);
             background: rgba(100, 100, 100);
             text-align: center; 
@@ -96,6 +96,11 @@
             <a href="{% url 'logoutUser' %}">Logout</a>
         </div>
     </div>
+    <div class="square">
     <h1>Payment Gateway</h1>
+    Total Amount to Pay : <b>{{ fare }}</b>
+    (Scan this code to pay)
+    <img src="https://www.mobiletransaction.org/wp-content/uploads/2019/09/qr-code-for-wikipedia-400x400.png">
+    </div>
 </body>
 </html>

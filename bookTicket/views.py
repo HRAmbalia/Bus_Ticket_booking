@@ -213,7 +213,9 @@ def print_pdf(request):
 
 def payFare(request):
     if request.user.is_authenticated:
-        context = {}
-        return render(request, 'bookticket/payment.html', context)
+        if request.method == "GET":
+            totalFare = request.GET['fare']
+            context = {'fare':totalFare}
+            return render(request, 'bookticket/payment.html', context)
     else:
         return redirect('/login')
