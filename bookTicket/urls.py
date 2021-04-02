@@ -10,7 +10,6 @@ urlpatterns = [
     path('search/bookBus', views.bookBus, name='searchBus'),
     path('myBooking/', views.booking, name='bookings'),
     path('chgPassword/', views.chgpass, name='chgpass'),
-<<<<<<< HEAD
     path('myBooking/print_pdf', views.print_pdf, name='printPDF'),
     path('myBooking/deleteTicket', views.dltTicket, name='deleteTicket'),
     path('payment', views.payFare, name='payment')
@@ -25,7 +24,3 @@ urlpatterns = [
 # try to develop cancel ticket - DONE
 # add image to website
 # update logged-in home page
-=======
-    
-]
->>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45

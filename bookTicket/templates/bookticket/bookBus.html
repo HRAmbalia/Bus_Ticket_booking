@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 {% load static %}
-=======
-{% comment %} this never can be called {% endcomment %}
->>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>search bus</title>
     <style>
-<<<<<<< HEAD
         body {
             margin: 0;
             padding: 0;
@@ -29,8 +24,6 @@
             background: rgba(100, 100, 100);
             text-align: center; 
         }
-=======
->>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
         * {
             box-sizing: border-box;
         }
@@ -81,10 +74,7 @@
         table,
         th,
         td {
-<<<<<<< HEAD
             left: 5%;
-=======
->>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
             border: 1px solid rgb(0, 0, 0);
             border-width: thin;
         }
@@ -93,11 +83,8 @@
             padding: 5px;
             text-align: left;
         }
-<<<<<<< HEAD
         #image { float: left;
 		  }
-=======
->>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
     </style>
 </head>
 <body>
@@ -118,7 +105,6 @@
             <a href="{% url 'logoutUser' %}">Logout</a>
         </div>
     </div>
-<<<<<<< HEAD
     <form action="" method="POST" class="square">
         {% csrf_token %}
         {% comment %} https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5z8-3WshCsE_BWkuj0CSCR3MVTC1WsA8RfA&usqp=CAU {% endcomment %}
@@ -133,33 +119,6 @@
         Gender : Male <input type="radio" name="gender" value="male" required>
                  Female <input type="radio" name="gender" value="female" required><br><br><br>
         <input type="reset" value="Reset">
-=======
-    {% for bus in bus_details %}
-        Bookings : {{bus}}  
-        User name ---> {{user.username}}    
-        Bus ID ---> {{bus.busID}}   
-        Arrival ---> {{bus.arrival}}    
-        Destination ---> {{bus.destination}}    
-        Rent ---> {{bus.rent}}  
-        Distance ---> {{bus.distance}}  
-        Booked Seat ---> {{bus.bookedSeat}}  
-    {% endfor %}
-    <br> 
-    {% for bus in bus_details %}
-        Bus Id : {{bus.busID}}<br>
-        From : {{bus.arrival}}<br>
-        To : {{bus.destination}}<br>
-        Rent per Seat : {{bus.rent}}<br>
-        Distance : {{bus.distance}}<br>
-    {% endfor %}
-    <form action="" method="POST">
-        {% csrf_token %}
-        Passanger name : <input type="text" name="pnm"><br>
-        Passanger age : <input type="text" name="pAge"><br>
-        Passanger Gender : <br>Male : <input type="radio" name="gender" value="male" required>
-                               Female : <input type="radio" name="gender" value="female" required><br>
-        Seat Number : <input type="text" name="sno">
->>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
         <input type="submit" value="ADD">
     </form>
 
@@ -184,11 +143,7 @@
             </tr>
             {% endfor %}
         </table>
-<<<<<<< HEAD
         total Fare : {{totalFare}}<br>
         check-out : <a href="/payment">Click here</a>
-=======
-        total Fare : {{totalFare}}
->>>>>>> 608c4ac2089babdec6d064e27ebf2d78b0f5bb45
 </body>
 </html>
